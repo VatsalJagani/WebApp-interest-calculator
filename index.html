@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Interest Calculator : Vatsal Jagani</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="interest,Calculator,vatsal,jagani" name="keywords">
+  <meta content="Single page site to calculate interest" name="description">
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i"
+    rel="stylesheet">
+
+  <!-- Bootstrap css -->
+  <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header" class="header header-hide">
+    <div class="container">
+      <div id="logo" class="pull-left">
+        <h1><a href="#" class="scrollto">Interest Calculator</a></h1>
+      </div>
+    </div>
+  </header><!-- #header -->
+
+  <section class="padd-section">
+    <div class="container">
+      <table class="table">
+        <tr>
+          <td style="text-align: right">Principle Amount</td>
+          <td colspan="2"><input type="number" class="form-control" id="principle_amount"></td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Payment Mode</td>
+          <td><input type="radio" id="payment_mode" name="payment_mode" value="Yearly" checked="checked"> Yearly</td>
+          <td><input type="radio" id="payment_mode" name="payment_mode" value="Monthly"> Monthly</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Payment Term (depends on the value selected in Payment Mode)</td>
+          <td colspan="2"><input type="number" class="form-control" id="payment_period"></td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Rate of interest (%)</td>
+          <td colspan="2"><input type="number" class="form-control" id="interest_rate"></td>
+        </tr>
+
+        <tr>
+          <td style="text-align: right">Total Period in years (including payment term)</td>
+          <td colspan="2"><input type="number" class="form-control" id="total_period"></td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Compound</td>
+          <td colspan="2">
+            <select class="form-control" name="compound_interest_calculation_period"
+              id="compound_interest_calculation_period">
+              <option value="0">Continuous</option>
+              <option value="365">Daily</option>
+              <option value="12">Monthly</option>
+              <option value="4" selected="selected">Quarterly</option>
+              <option value="1">Annually</option>
+            </select>
+        </tr>
+        <tr>
+          <td style="text-align: right"></td>
+          <td colspan="2"><button class="btn" id="submit_btn">Calculate</td>
+        </tr>
+      </table>
+    </div>
+    <div class="container text-center" id="result_div" style="display: none">
+      <h5>Amount after completion of total term would be: <span style="color:black" id="result_id">1254.23</span></h5>
+    </div>
+    <div class="container text-center" id="error_div" style="display: none">
+      <h5 style="color:brown" id="error_id">This is error message</h5>
+    </div>
+  </section>
+
+  <section id="newsletter" class="newsletter text-center fadeInUp">
+    <div class="overlay padd-section">
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-md-9 col-lg-6">
+            <h4>vatsaljagani85@gmail.com</h4>
+          </div>
+        </div>
+
+        <ul class="list-unstyled">
+          <li><a target="_blank" href="https://www.facebook.com/vatsal.jagani"><i class="fa fa-facebook"></i></a></li>
+          <li><a target="_blank" href="https://twitter.com/JaganiVatsal"><i class="fa fa-twitter"></i></a></li>
+          <li><a target="_blank" href="mailto: vatsaljagani85@gmail.com"><i class="fa fa-google"></i></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/in/vatsal-jagani-576aa9131"><i
+                class="fa fa-linkedin"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Template Main Javascript File -->
+  <script src="js/interest_calculator.js"></script>
+
+</body>
+
+</html>
