@@ -9,7 +9,7 @@ function calculate_compound_interest(P, R, N, T){
 PAYMENT_MODE_MONTHLY = "Monthly"
 PAYMENT_MODE_YEARLY = "Yearly"
 
-function calculate_interest(principle_amount, payment_period_mode, payment_period, interest_rate, total_period, compound_interest_calculation_period=4){
+function calculate_final_amount(principle_amount, payment_period_mode, payment_period, interest_rate, total_period, compound_interest_calculation_period=4){
     /*
     calculate is actually returns final accrued amount and not only the interest
     principle_amount
@@ -19,7 +19,7 @@ function calculate_interest(principle_amount, payment_period_mode, payment_perio
     total_period - total period after which you want amount (in years)
     compound_interest_calculation_period - default is 4 which means quarterly interest added to principle amount
     */
-    console.log(principle_amount, payment_period_mode, payment_period, interest_rate, total_period, compound_interest_calculation_period)
+    console.log("Final amount calculation", principle_amount, payment_period_mode, payment_period, interest_rate, total_period, compound_interest_calculation_period)
     let total = 0;
     let left_period_of_time = 0;
     if(payment_period_mode === PAYMENT_MODE_MONTHLY){
@@ -36,6 +36,18 @@ function calculate_interest(principle_amount, payment_period_mode, payment_perio
     }
     
     return calculate_compound_interest(total, interest_rate, compound_interest_calculation_period, left_period_of_time);
+}
+
+function calculate_interest(principle_amount, payment_period, final_amount){
+    /*
+    calculates the interest based on principle amount and final amount
+    principle_amount
+    payment_period - number of month/year depends on the payment_period_mode
+    final_amount - final amount calculated by calculate_final_amount function
+    */
+    console.log("Interest calculation", principle_amount, payment_period, final_amount)
+    let total_principle = principle_amount * payment_period;
+    return final_amount - total_principle;
 }
 
 function calculate_interest_on_values(){
@@ -80,8 +92,14 @@ function calculate_interest_on_values(){
     }
 
     let compound = $("select[name='compound_interest_calculation_period'] option:selected").val();
+    let final_amount = calculate_final_amount(p, payment_period_mode, payment_period, r, total_period, compound);
+    let total_interest = calculate_interest(p, payment_period, final_amount);
+    final_amount = Math.round(final_amount * 100) / 100;
+    total_interest = Math.round(total_interest * 100) / 100;
 
-    $("#result_id").text(calculate_interest(p, payment_period_mode, payment_period, r, total_period, compound));
+
+    $("#final_amount").text(final_amount);
+    $("#total_interest").text(total_interest);
     $("#result_div").show()
 }
 
